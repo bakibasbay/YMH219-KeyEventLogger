@@ -36,8 +36,80 @@ partial class Form1
         btnClear = new Button();
         lblStatus = new Label();
         btnSave = new Button();
+        grpStats = new GroupBox();
+        lblTotalKeys = new Label();
+        lblTotalEvents = new Label();
+        lblDistinctKeys = new Label();
+        lblTopTitle = new Label();
+        lstTopKeys = new ListBox();
         grpLog.SuspendLayout();
+        grpStats.SuspendLayout();
         SuspendLayout();
+        //
+        // grpStats
+        //
+        grpStats.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+        grpStats.Controls.Add(lstTopKeys);
+        grpStats.Controls.Add(lblTopTitle);
+        grpStats.Controls.Add(lblDistinctKeys);
+        grpStats.Controls.Add(lblTotalEvents);
+        grpStats.Controls.Add(lblTotalKeys);
+        grpStats.Location = new Point(604, 72);
+        grpStats.Name = "grpStats";
+        grpStats.Size = new Size(284, 440);
+        grpStats.TabIndex = 7;
+        grpStats.TabStop = false;
+        grpStats.Text = "İstatistikler";
+        //
+        // lblTotalKeys
+        //
+        lblTotalKeys.AutoSize = true;
+        lblTotalKeys.Location = new Point(14, 34);
+        lblTotalKeys.Name = "lblTotalKeys";
+        lblTotalKeys.Size = new Size(150, 20);
+        lblTotalKeys.TabIndex = 0;
+        lblTotalKeys.Text = "Toplam tuş basışı: 0";
+        //
+        // lblTotalEvents
+        //
+        lblTotalEvents.AutoSize = true;
+        lblTotalEvents.Location = new Point(14, 62);
+        lblTotalEvents.Name = "lblTotalEvents";
+        lblTotalEvents.Size = new Size(200, 20);
+        lblTotalEvents.TabIndex = 1;
+        lblTotalEvents.Text = "Toplam olay (Down + Up): 0";
+        //
+        // lblDistinctKeys
+        //
+        lblDistinctKeys.AutoSize = true;
+        lblDistinctKeys.Location = new Point(14, 90);
+        lblDistinctKeys.Name = "lblDistinctKeys";
+        lblDistinctKeys.Size = new Size(140, 20);
+        lblDistinctKeys.TabIndex = 2;
+        lblDistinctKeys.Text = "Farklı tuş sayısı: 0";
+        //
+        // lblTopTitle
+        //
+        lblTopTitle.AutoSize = true;
+        lblTopTitle.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+        lblTopTitle.Location = new Point(14, 128);
+        lblTopTitle.Name = "lblTopTitle";
+        lblTopTitle.Size = new Size(190, 20);
+        lblTopTitle.TabIndex = 3;
+        lblTopTitle.Text = "En sık kullanılan 5 tuş:";
+        //
+        // lstTopKeys
+        //
+        lstTopKeys.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+        lstTopKeys.Font = new Font("Consolas", 10F);
+        lstTopKeys.FormattingEnabled = true;
+        lstTopKeys.IntegralHeight = false;
+        lstTopKeys.Location = new Point(14, 154);
+        lstTopKeys.Name = "lstTopKeys";
+        lstTopKeys.SelectionMode = SelectionMode.None;
+        lstTopKeys.Size = new Size(256, 272);
+        lstTopKeys.TabIndex = 4;
+        lstTopKeys.TabStop = false;
         //
         // btnSave
         //
@@ -137,6 +209,7 @@ partial class Form1
         AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(900, 560);
+        Controls.Add(grpStats);
         Controls.Add(lblStatus);
         Controls.Add(btnSave);
         Controls.Add(btnClear);
@@ -152,6 +225,8 @@ partial class Form1
         KeyDown += Form1_KeyDown;
         KeyUp += Form1_KeyUp;
         grpLog.ResumeLayout(false);
+        grpStats.ResumeLayout(false);
+        grpStats.PerformLayout();
         ResumeLayout(false);
         PerformLayout();
     }
@@ -166,4 +241,10 @@ partial class Form1
     private Button btnClear;
     private Label lblStatus;
     private Button btnSave;
+    private GroupBox grpStats;
+    private Label lblTotalKeys;
+    private Label lblTotalEvents;
+    private Label lblDistinctKeys;
+    private Label lblTopTitle;
+    private ListBox lstTopKeys;
 }

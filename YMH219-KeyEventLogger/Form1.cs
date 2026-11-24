@@ -15,6 +15,9 @@ public partial class Form1 : Form
     // Kayıtları .txt dosyasına yazan servis
     private readonly LogFileService _fileService = new();
 
+    // Toplam tuş ve en sık 5 tuş istatistiği
+    private readonly KeyStatistics _statistics = new();
+
     public Form1()
     {
         InitializeComponent();
@@ -25,6 +28,7 @@ public partial class Form1 : Form
 
         // Uygulama kayıt KAPALI olarak açılır; kullanıcı Başlat'a basmalıdır
         UpdateUi();
+        UpdateStatistics();
 
         // Açılışta odak listede olsun
         ActiveControl = lstLog;
@@ -78,7 +82,9 @@ public partial class Form1 : Form
         if (answer == DialogResult.Yes)
         {
             _logger.Clear();
+            _statistics.Clear();
             lstLog.Items.Clear();
+            UpdateStatistics();
         }
         FocusLog();
     }
@@ -135,7 +141,41 @@ public partial class Form1 : Form
     {
         lstLog.Items.Add(entry.ToString());
         lstLog.TopIndex = lstLog.Items.Count - 1;
+
+        _statistics.Add(entry);
+        UpdateStatistics();
         UpdateUi();
+    }
+
+    /// <summary>
+    /// İstatistik panelindeki etiketleri ve "en sık 5 tuş" listesini yeniler.
+    /// </summary>
+    private void UpdateStatistics()
+    {
+        lblTotalKeys.Text = $"Toplam tuş basışı: {_statistics.TotalKeyPresses}";
+        lblTotalEvents.Text = $"Toplam olay (Down + Up): {_statistics.TotalEvents}";
+        lblDistinctKeys.Text = $"Farklı tuş sayısı: {_statistics.DistinctKeyCount}";
+
+        lstTopKeys.BeginUpdate();
+        lstTopKeys.Items.Clear();
+
+        var topKeys = _statistics.GetTopKeys(5);
+        if (topKeys.Count == 0)
+        {
+            lstTopKeys.Items.Add("(henüz kayıt yok)");
+        }
+        else
+        {
+            int rank = 1;
+            foreach (var (keyName, count) in topKeys)
+            {
+                // Örn. "1. A          12 kez"
+                lstTopKeys.Items.Add($"{rank}. {keyName,-12} {count,4} kez");
+                rank++;
+            }
+        }
+
+        lstTopKeys.EndUpdate();
     }
 
     private void Logger_StateChanged(object? sender, EventArgs e)
