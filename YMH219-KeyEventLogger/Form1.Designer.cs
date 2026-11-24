@@ -35,8 +35,20 @@ partial class Form1
         btnStop = new Button();
         btnClear = new Button();
         lblStatus = new Label();
+        btnSave = new Button();
         grpLog.SuspendLayout();
         SuspendLayout();
+        //
+        // btnSave
+        //
+        btnSave.Location = new Point(366, 14);
+        btnSave.Name = "btnSave";
+        btnSave.Size = new Size(110, 40);
+        btnSave.TabIndex = 5;
+        btnSave.TabStop = false;
+        btnSave.Text = "Kaydet (.txt)";
+        btnSave.UseVisualStyleBackColor = true;
+        btnSave.Click += btnSave_Click;
         //
         // lblStatus
         //
@@ -126,6 +138,7 @@ partial class Form1
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(900, 560);
         Controls.Add(lblStatus);
+        Controls.Add(btnSave);
         Controls.Add(btnClear);
         Controls.Add(btnStop);
         Controls.Add(btnStart);
@@ -152,4 +165,5 @@ partial class Form1
     private Button btnStop;
     private Button btnClear;
     private Label lblStatus;
+    private Button btnSave;
 }
