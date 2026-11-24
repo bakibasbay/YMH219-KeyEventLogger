@@ -31,8 +31,44 @@ partial class Form1
         grpLog = new GroupBox();
         lstLog = new ListBox();
         lblInfo = new Label();
+        btnStart = new Button();
+        btnStop = new Button();
+        btnClear = new Button();
         grpLog.SuspendLayout();
         SuspendLayout();
+        //
+        // btnStart
+        //
+        btnStart.Location = new Point(12, 14);
+        btnStart.Name = "btnStart";
+        btnStart.Size = new Size(110, 40);
+        btnStart.TabIndex = 2;
+        btnStart.TabStop = false;
+        btnStart.Text = "▶ Başlat";
+        btnStart.UseVisualStyleBackColor = true;
+        btnStart.Click += btnStart_Click;
+        //
+        // btnStop
+        //
+        btnStop.Location = new Point(130, 14);
+        btnStop.Name = "btnStop";
+        btnStop.Size = new Size(110, 40);
+        btnStop.TabIndex = 3;
+        btnStop.TabStop = false;
+        btnStop.Text = "■ Durdur";
+        btnStop.UseVisualStyleBackColor = true;
+        btnStop.Click += btnStop_Click;
+        //
+        // btnClear
+        //
+        btnClear.Location = new Point(248, 14);
+        btnClear.Name = "btnClear";
+        btnClear.Size = new Size(110, 40);
+        btnClear.TabIndex = 4;
+        btnClear.TabStop = false;
+        btnClear.Text = "Temizle";
+        btnClear.UseVisualStyleBackColor = true;
+        btnClear.Click += btnClear_Click;
         //
         // grpLog
         //
@@ -75,6 +111,9 @@ partial class Form1
         AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(900, 560);
+        Controls.Add(btnClear);
+        Controls.Add(btnStop);
+        Controls.Add(btnStart);
         Controls.Add(lblInfo);
         Controls.Add(grpLog);
         KeyPreview = true;
@@ -94,4 +133,7 @@ partial class Form1
     private GroupBox grpLog;
     private ListBox lstLog;
     private Label lblInfo;
+    private Button btnStart;
+    private Button btnStop;
+    private Button btnClear;
 }
