@@ -34,8 +34,22 @@ partial class Form1
         btnStart = new Button();
         btnStop = new Button();
         btnClear = new Button();
+        lblStatus = new Label();
         grpLog.SuspendLayout();
         SuspendLayout();
+        //
+        // lblStatus
+        //
+        lblStatus.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+        lblStatus.BackColor = Color.Firebrick;
+        lblStatus.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+        lblStatus.ForeColor = Color.White;
+        lblStatus.Location = new Point(688, 14);
+        lblStatus.Name = "lblStatus";
+        lblStatus.Size = new Size(200, 40);
+        lblStatus.TabIndex = 6;
+        lblStatus.Text = "● KAYIT KAPALI";
+        lblStatus.TextAlign = ContentAlignment.MiddleCenter;
         //
         // btnStart
         //
@@ -111,6 +125,7 @@ partial class Form1
         AutoScaleDimensions = new SizeF(8F, 20F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(900, 560);
+        Controls.Add(lblStatus);
         Controls.Add(btnClear);
         Controls.Add(btnStop);
         Controls.Add(btnStart);
@@ -136,4 +151,5 @@ partial class Form1
     private Button btnStart;
     private Button btnStop;
     private Button btnClear;
+    private Label lblStatus;
 }

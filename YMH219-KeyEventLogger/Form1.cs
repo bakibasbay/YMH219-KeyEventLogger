@@ -98,12 +98,27 @@ public partial class Form1 : Form
     }
 
     /// <summary>
-    /// Butonları kayıt durumuna göre aktif/pasif yapar.
+    /// Durum göstergesini ve butonları kayıt durumuna göre günceller.
     /// </summary>
     private void UpdateUi()
     {
         bool recording = _logger.IsRecording;
         bool hasEntries = _logger.Count > 0;
+
+        // Durum göstergesi: açıkken yeşil, kapalıyken kırmızı
+        if (recording)
+        {
+            lblStatus.Text = "● KAYIT AÇIK";
+            lblStatus.BackColor = Color.SeaGreen;
+        }
+        else
+        {
+            lblStatus.Text = "● KAYIT KAPALI";
+            lblStatus.BackColor = Color.Firebrick;
+        }
+
+        // Pencere başlığında da durum ve kayıt sayısı görünsün
+        Text = $"YMH219 - Key Event Logger [{(recording ? "Kayıt açık" : "Kayıt kapalı")}] - {_logger.Count} kayıt";
 
         btnStart.Enabled = !recording;   // Kayıt açıkken tekrar başlatılamaz
         btnStop.Enabled = recording;     // Kayıt kapalıyken durdurulamaz
