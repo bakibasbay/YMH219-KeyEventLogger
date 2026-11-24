@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <RootNamespace>KeyEventLogger</RootNamespace>
+    <AssemblyName>YMH219-KeyEventLogger</AssemblyName>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- .NET 8 çalışma zamanı yoksa daha yeni sürümde (ör. .NET 10) çalışabilsin -->
+    <RollForward>Major</RollForward>
+  </PropertyGroup>
+
+</Project>
